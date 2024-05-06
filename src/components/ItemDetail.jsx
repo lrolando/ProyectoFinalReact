@@ -24,7 +24,6 @@ export const ItemDetail = ({ product }) => {
                                 alt={product.title}
                                 rounded
                             />
-                        <Card.Title>Special title treatment</Card.Title>
                         <Card.Text>{product.description}</Card.Text>
                         <Card.Subtitle>{`Stock : ${product.stock}`}</Card.Subtitle>
                         <Card.Subtitle>{`Precio $ ${product.price}`}</Card.Subtitle>
@@ -32,26 +31,6 @@ export const ItemDetail = ({ product }) => {
                 <Card.Footer className="text-muted"><ItemCount stock={product.stock} onAdd={add}/></Card.Footer>
             </Card>
 
-
-
-            <Form>
-                <Form.Group className="mb-3" controlId="formGroupEmail">
-                    
-                </Form.Group>
-                <Form.Group>
-                    
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label column="lg"></Form.Label>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label column="m"></Form.Label>
-                </Form.Group>    
-                    <Form.Label column="lg"></Form.Label>
-                <Form.Group>    
-                    
-                </Form.Group>
-            </Form>
         </Container>
     );
 }

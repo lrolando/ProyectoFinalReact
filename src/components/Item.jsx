@@ -10,7 +10,7 @@ export const Item = ({ product}) => (
         <Card.Title>{product.title}</Card.Title>
         <Image style={{ height: 300, width: 180 }} src={product.image} thumbnail/>
         <Card.Text>{product.description}</Card.Text>
-        <Card.Text>{product.categoryId}</Card.Text>
+        <Card.Text>{product.category}</Card.Text>
         <Link to={`/ProyectoFinalReact/item/${product.id}`}>
             <Button variant="primary">Detalles</Button>
         </Link>

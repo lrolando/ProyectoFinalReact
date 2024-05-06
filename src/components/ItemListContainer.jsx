@@ -27,10 +27,38 @@ export const ItemListContainer = () =>
                 )
             }
             getDocs(refCollection).then((snapshot) => {
-                setProducts(
-                snapshot.docs.map((doc) => {
-                            return{ id: doc.id, ...doc.data() }}))})
-                },[id])
+                    setProducts(
+                        snapshot.docs.map((doc) => {
+                                    return{ id: doc.id,
+                                            category: '',
+                                             ...doc.data() }}))
+                                            })
+                         
+            
+
+            }
+
+            ,[id])
+
+
+        useEffect(() => {
+
+            const db = getFirestore();
+            const refCat = collection(db, "categories")   
+               
+            getDocs(refCat).then((sn) => {
+                sn.docs.map((doc) => {
+                    products.forEach(element => { 
+                        if(element.categoryId == doc.id)
+                        {element.category = doc.data().title}
+                    }); 
+            console.log(doc.data())})
+            })  
+            
+        
+        })
+
+                console.log(products)
     return (
         <Container>
                 <ItemList products={products}/>

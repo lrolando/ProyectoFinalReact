@@ -9,16 +9,16 @@ export const Provider = ({ children }) => {
     const clear = () => setItems([]);
 
     const removeItem = (id) => {
-        const filtered = items.filter((item) => item.id !== id);
+        const filtered = items.filter((i) => i.item.id !== id);
         setItems(filtered);
+        sessionStorage.setItem("cart", JSON.stringify(filtered))
     }
 
     const addItem = (item, quantity) => {
-        const isExists = items.some((i) => i.id === item.id);
-
+        const isExists = items.some((i) => i.item.id === item.id);
         if (isExists){
             const updateItems = items.map((i) => {
-                if(i.id === item.id) {
+                if(i.item.id === item.id) {
                     return {
                         ...i,
                         quantity: i.quantity + quantity,
@@ -32,6 +32,7 @@ export const Provider = ({ children }) => {
         }else{
         setItems([...items,{item, quantity}]);
         }
+        sessionStorage.setItem("cart", JSON.stringify(items))
     }
 
     return(

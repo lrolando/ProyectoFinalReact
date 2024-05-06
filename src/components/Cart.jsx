@@ -1,13 +1,9 @@
-import { Container } from "react-bootstrap";
 import { useContext, useState } from "react";
 
 import { CartContext } from "../contexts/CartContext";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Button from "react-bootstrap/Button";
-import CloseButton from "react-bootstrap/CloseButton";
+import { Container, Form, InputGroup, Button, ListGroup, Card, CloseButton } from "react-bootstrap";
 
 const initialValues = {
     name: "",
@@ -17,10 +13,10 @@ const initialValues = {
 }    
 export const Cart = () => {
     const [values, setValues] = useState(initialValues);
-    const { clear, items } = useContext(CartContext)
+    const { clear, items, removeItem } = useContext(CartContext)
 
     const total = () => 
-        items.reduce((acc, item) => acc + item.quantity * item.price, 0);
+        items.reduce((acc, i) => acc + i.quantity * i.item.price, 0);
 
     const handleChange = (ev) => {
         setValues((prev) => {
@@ -45,6 +41,7 @@ export const Cart = () => {
             .then(({id}) => {
                 if(id){
                     alert("Su orden: " + id + "ha sido completada!");
+                    sessionStorage.clear('cart')
                 }
             })
             .finally(() => {
@@ -52,8 +49,8 @@ export const Cart = () => {
             setValues(initialValues);
     })
     }
-
-    const handleRemove = (id) => removeItem(id);
+    
+    const handleRemove = (id) => {removeItem(id)}
     const handleClear = () => clear();
 
     return(
@@ -62,14 +59,23 @@ export const Cart = () => {
         <Container className="mt-4">
             <h1>Products</h1>
             {items.map((i) => {
-                return(
-                    <ul key = {i.title}>
-                        <li>Prod: {i.title}</li>
-                        <li>Cant: {i.quantity}</li>
-                        <li>$ {i.price}</li>
-                        <li onClick={() => handleRemove(i.id)}>X</li>
-                    </ul>
-                )
+                return(<>
+                    <Card key = {i.item.id} style={{ width: '18rem' }}>
+                        <Card.Body>
+                            <Card.Title>{i.item.title}</Card.Title>
+                            <Card.Subtitle className="mb-2 text-muted">Cant: {i.quantity}</Card.Subtitle>
+                            <Card.Text>$ {i.item.price}</Card.Text>
+                            <Card.Link onClick={() => handleRemove(i.item.id)}>Eliminar</Card.Link>
+                        </Card.Body>
+                    </Card>
+                        {/*<ul  >
+                            <li>Prod: </li>
+                            <li></li>
+                            <li></li>
+                            <button >X</button>
+                </ul>*/}</>
+                        )
+                
             })}
             <div>Total: {total()}</div>
             <Button onClick={handleClear}>Vaciar</Button>
