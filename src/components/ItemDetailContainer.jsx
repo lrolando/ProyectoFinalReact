@@ -2,7 +2,6 @@ import React, { useEffect, useState} from "react";
 import Container from "react-bootstrap/Container";
 import { useParams } from "react-router-dom";
 import {ItemDetail} from './ItemDetail';
-import data from "../data/products.json";
 import { getFirestore, getDoc, doc } from "firebase/firestore";
 
 export const ItemDetailContainer = () => {

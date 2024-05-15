@@ -1,8 +1,17 @@
-# React + Vite
+# Tienda online de bebidas "Borrachin"
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicacion realizada con React en javascript y usando firestore como base de datos para los items a vender y para almacenar las ordenes de los clientes.
 
-Currently, two official plugins are available:
+El objetivo de la aplicacion es poder tomar pedidos de manera online. El cliente puede ver los productos y sus precios y luego realizar su encargo dejando sus datos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+La aplicacion se puede probar en: https://lrolando.github.io/ProyectoFinalReact/
+
+Para correr el proyecto de manera local es necesario:
+
+    git clone https://github.com/lrolando/ProyectoFinalReact.git
+    
+    cd ProyectoFinalReact
+    
+    npm install 
+    
+    npm run dev

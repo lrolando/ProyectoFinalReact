@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import {CartWidget} from './CartWidget';
-import {Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
-import { getFirestore, getDoc, doc, collection, getDocs, where, query } from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 import { Link } from 'react-router-dom';
 
 export const NavBar = () => {
@@ -20,8 +20,6 @@ export const NavBar = () => {
 						return{ id: doc.id, ...doc.data() }}))})
 	})
 
-	const handleClick = () => history.push()
-
     return(
 		<div>
 		<Navbar bg="dark" data-bs-theme="dark" className="bg-body-tertiary">
@@ -30,7 +28,6 @@ export const NavBar = () => {
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="me-auto">
-				<Link  to={'/ProyectoFinalReact/'} style={{ textDecoration: 'none'}}><Nav.Link>Home</Nav.Link></Link>
 					<NavDropdown title="Secciones" id="basic-nav-dropdown">
 					{categories.map((i)=> {
 						return(

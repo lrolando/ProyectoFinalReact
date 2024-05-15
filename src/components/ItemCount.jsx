@@ -37,21 +37,6 @@ export const ItemCount = ({ stock, onAdd}) => {
                 </Form.Group>
             </Form>
             </Container>
-            
-            
-            {/*<Button variant="secondary" onClick={decrease}>-</Button>
-            <InputGroup.Text type ="number" value={count} readOnly></InputGroup.Text>
-            <input type ="number" value={count} readOnly />
-            <Button variant="success" onClick={increase}>+</Button>
-            <div><Button  variant="danger" onClick={handleAdd}>Agregar al carrito</Button></div>*/}
-
-
-            {/*<button disabled={count<=1} onClick={decrease}>-</button>
-            <span>{count}</span>
-            <button disabled={count>=stock} onClick={increase}>+</button>
-            <div>
-                <button disabled={stock <= 0} onClick={() => onAdd(count)}>Agregar al carrito</button>
-            </div>*/}
         </div>
     )
 }

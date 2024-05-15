@@ -41,7 +41,6 @@ export const Cart = () => {
             .then(({id}) => {
                 if(id){
                     alert("Su orden: " + id + "ha sido completada!");
-                    sessionStorage.clear('cart')
                 }
             })
             .finally(() => {
@@ -68,12 +67,7 @@ export const Cart = () => {
                             <Card.Link onClick={() => handleRemove(i.item.id)}>Eliminar</Card.Link>
                         </Card.Body>
                     </Card>
-                        {/*<ul  >
-                            <li>Prod: </li>
-                            <li></li>
-                            <li></li>
-                            <button >X</button>
-                </ul>*/}</>
+                    </>
                         )
                 
             })}
@@ -87,22 +81,38 @@ export const Cart = () => {
         <Form.Label htmlFor="basic-url">Informacion de envio</Form.Label>
         <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon3">Nombre</InputGroup.Text>
-            <Form.Control id="basic-url" aria-describedby="basic-addon3" onChange={handleChange}/>
+            <Form.Control
+            type="text"
+            value={values.name}
+            name="name"
+            id="basic-url" aria-describedby="basic-addon3" onChange={handleChange}/>
         </InputGroup>
 
         <InputGroup className="mb-3">
             <InputGroup.Text>Celular</InputGroup.Text>
-            <Form.Control id="basic-url" aria-describedby="basic-addon3" onChange={handleChange}/>
+            <Form.Control
+            type="text"
+            value={values.phone}
+            name="phone"
+            id="basic-url" aria-describedby="basic-addon3" onChange={handleChange}/>
         </InputGroup>
 
         <InputGroup className="mb-3">
             <InputGroup.Text>Email</InputGroup.Text>
-            <Form.Control id="basic-url" aria-describedby="basic-addon3" onChange={handleChange}/>
+            <Form.Control
+             type="text"
+             value={values.email}
+             name="email"
+             id="basic-url" aria-describedby="basic-addon3" onChange={handleChange}/>
         </InputGroup>
 
         <InputGroup>
             <InputGroup.Text>Direccion</InputGroup.Text>
-            <Form.Control as="textarea" aria-label="With textarea" onChange={handleChange}/>
+            <Form.Control
+             type="text"
+             value={values.direccion}
+             name="direccion"
+             as="textarea" aria-label="With textarea" onChange={handleChange}/>
         </InputGroup>
         
         <Button type="button" onClick={handleSubmit}>Enviar</Button>
@@ -111,28 +121,4 @@ export const Cart = () => {
         </>
     )
 }
-            {/*<form>
-                <label>Nombre</label>
-                <input
-                    type="text"
-                    value={values.name}
-                    name="name"
-                    onChange={handleChange}
-                />
-                <label>Celu</label>
-                <input
-                    type="text"
-                    value={values.phone}
-                    name="phone"
-                    onChange={handleChange}
-                />    
-                <label>Email</label>
-                <input
-                    type="text"
-                    value={values.email}
-                    name="email"
-                    onChange={handleChange}
-                />
-                
-        </form>*/}
        
